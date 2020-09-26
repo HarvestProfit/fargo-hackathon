@@ -1,5 +1,5 @@
 name: fargo-hackathon
-region: ams
+region: nyc
 services:
   - name: backend
     dockerfile_path: backend/Dockerfile
