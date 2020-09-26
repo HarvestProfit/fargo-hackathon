@@ -4,6 +4,7 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'bin/**/*'
+    - 'vendor/**/*'
 Layout/EmptyLineAfterGuardClause:
     Enabled: false
 Layout/LineLength:
