@@ -25,11 +25,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
+      working-directory: './backend'
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+
     # Test setup
     - name: Setup database
+      working-directory: './backend'
       env:
         DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/backend_test
         RAILS_ENV: test
@@ -38,6 +41,7 @@ jobs:
         bundle exec rails db:migrate
     # Actually run all the tests
     - name: Run tests
+      working-directory: './backend'
       env:
         DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/backend_test
         RAILS_ENV: test
