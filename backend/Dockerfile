@@ -4,7 +4,7 @@ RUN apk update && apk add build-base postgresql-dev geos-dev
 WORKDIR /backend
 COPY backend/Gemfile ./
 COPY backend/Gemfile.lock ./
-RUN bundle install
+RUN bundle install --without development test
 COPY backend/ ./
 
 # Add a script to be executed every time the container starts.
