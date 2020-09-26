@@ -1,6 +1,6 @@
 # Runs our test suite via Github Actions
 
-name: Ruby Tests
+name: Ruby
 
 on:
   push:
@@ -47,3 +47,18 @@ jobs:
         RAILS_ENV: test
         CI: true
       run: bundle exec rails test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+        working-directory: './backend'
+    # Actually run all the tests
+    - name: Run tests
+      working-directory: './backend'
+      env:
+        CI: true
+      run: bundle exec rails rubocop
