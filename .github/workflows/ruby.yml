@@ -61,4 +61,4 @@ jobs:
       working-directory: './backend'
       env:
         CI: true
-      run: bundle exec rails rubocop
+      run: bundle exec rubocop
