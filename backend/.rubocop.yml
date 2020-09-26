@@ -1,0 +1,30 @@
+require: rubocop-rails
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+Layout/EmptyLineAfterGuardClause:
+    Enabled: false
+Layout/LineLength:
+  Max: 120
+  IgnoredPatterns:
+    - 'config/**/*.rb'
+Metrics/BlockLength:
+  Max: 80
+  Exclude:
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'test/**/*.rb'
+Metrics/MethodLength:
+  Max: 30
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Style/WordArray:
+  EnforcedStyle: brackets
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+Style/SymbolArray:
+  EnforcedStyle: brackets
