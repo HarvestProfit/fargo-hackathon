@@ -1,0 +1,14 @@
+name: fargo-hackathon
+region: ams
+services:
+  - name: backend
+    dockerfile_path: backend/Dockerfile
+    routes:
+      - /api
+  - name: frontend
+    dockerfile_path: frontend/Dockerfile
+    routes:
+      - /
+databases:
+  - name: postgres
+    engine: PG
