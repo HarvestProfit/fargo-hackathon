@@ -10,4 +10,4 @@ COPY backend/ ./
 EXPOSE 3001
 
 # Start the main process.
-CMD bundle exec puma -C config/puma.rb
+CMD bundle exec rails server
