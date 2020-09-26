@@ -7,10 +7,6 @@ COPY backend/Gemfile.lock ./
 RUN bundle install --without development test
 COPY backend/ ./
 
-# Add a script to be executed every time the container starts.
-COPY backend/entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3001
 
 # Start the main process.

@@ -1,0 +1,14 @@
+name: fargo-hackathon
+services:
+  - name: backend
+    dockerfile_path: backend/Dockerfile
+    github:
+      repo: HarvestProfit/fargo-hackathon
+      branch: master
+    routes:
+      - path: /api
+  - name: frontend
+    dockerfile_path: frontend/Dockerfile
+    github:
+      repo: HarvestProfit/fargo-hackathon
+      branch: master
