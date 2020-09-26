@@ -1,11 +1,11 @@
 FROM node:lts-alpine as build
 
-WORKDIR /app
+WORKDIR /frontend
 
-COPY app/package.json ./
-COPY app/yarn.lock ./
+COPY frontend/package.json ./
+COPY frontend/yarn.lock ./
 RUN yarn install
-COPY app/ ./
+COPY frontend/ ./
 RUN yarn build
 RUN yarn global add serve
 EXPOSE 3000
