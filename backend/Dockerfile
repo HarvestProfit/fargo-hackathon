@@ -1,6 +1,6 @@
 FROM ruby:2.7-alpine
 RUN bundle config --global frozen 1
-RUN apk update && apk add postgresql-client geos
+RUN apk update && apk add build-base postgresql-client geos
 WORKDIR /backend
 COPY backend/Gemfile ./
 COPY backend/Gemfile.lock ./
