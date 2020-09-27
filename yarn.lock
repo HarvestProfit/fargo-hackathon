@@ -2213,7 +2213,17 @@
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-5.1.5.tgz#153405227ab933d004a5bb9641a9ed999fcbe0cf"
   integrity sha1-FTQFInq5M9AEpbuWQantmZ/L4M8=
 
-"@turf/intersect@>=4.0.0":
+"@turf/hex-grid@6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/hex-grid/-/hex-grid-6.0.1.tgz#c55965149961015d6a39826b3c2076afc78bcac9"
+  integrity sha512-++FH/cCRvFD+5bw4OQi31ulkVqkl+dRirG38wC8WeSwlP5LW3YXqSL1aIJCw12mv5g29eIPhZQoVstHjn4pVqQ==
+  dependencies:
+    "@turf/distance" "6.x"
+    "@turf/helpers" "6.x"
+    "@turf/intersect" "6.x"
+    "@turf/invariant" "6.x"
+
+"@turf/intersect@6.x", "@turf/intersect@>=4.0.0":
   version "6.1.3"
   resolved "https://registry.yarnpkg.com/@turf/intersect/-/intersect-6.1.3.tgz#c6574a2f00a38df6f81fc08d8103ad5295b7b6bc"
   integrity sha512-SeAJG/zPRRTeyK2OifkPoyLq60q8tv8prpPIH3R8ZhyF4MdLOnMv5MURaQ6kQd+3UTDrL+pYm6rqbPvln1zqIw==
