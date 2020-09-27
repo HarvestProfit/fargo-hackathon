@@ -1,16 +1,12 @@
 module Types
   class QueryType < Types::Base::Object
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field,
-          String,
+    field :counties,
+          Types::CountyType.connection_type,
           null: false,
-          description: 'An example field added by the generator'
+          description: 'Counties tracked in the application'
 
-    def test_field
-      'Hello World!'
+    def counties
+      County.all
     end
   end
 end
