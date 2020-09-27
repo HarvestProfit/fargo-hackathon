@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12
+        image: postgis/postgis:latest
         ports: ['5432:5432']
         env:
           POSTGRES_PASSWORD: postgres
@@ -34,7 +34,7 @@ jobs:
     - name: Setup database
       working-directory: './backend'
       env:
-        DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/backend_test
+        DATABASE_URL: postgis://postgres:postgres@127.0.0.1:5432/backend_test
         RAILS_ENV: test
       run: |
         bundle exec rails db:setup
@@ -43,7 +43,7 @@ jobs:
     - name: Run tests
       working-directory: './backend'
       env:
-        DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/backend_test
+        DATABASE_URL: postgis://postgres:postgres@127.0.0.1:5432/backend_test
         RAILS_ENV: test
         CI: true
       run: bundle exec rails test
