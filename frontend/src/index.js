@@ -1,21 +1,63 @@
-import React from 'react';
+import graphql from 'babel-plugin-relay/macro';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './app/store';
+import store from './store';
 import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import { QueryRenderer } from 'react-relay';
+
+import environment from './utilities/environment';
+
+class Application extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      env: environment,
+      query: graphql`
+        query srcQuery {
+          counties {
+            nodes {
+              id
+              name
+              shape
+            }
+          }
+        }
+      `
+    }
+  }
+
+  render() {
+    const { env, query } = this.state;
+
+    return (
+      <QueryRenderer
+        environment={env}
+        query={query}
+        variables={{}}
+        render={({ props }) => {
+          if (!props) {
+            return null;
+          }
+          console.log(props);
+          return (
+            <App
+              data={props}
+            />
+          );
+        }}
+      />
+    );
+  }
+
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Application />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
