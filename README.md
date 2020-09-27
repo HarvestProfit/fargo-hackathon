@@ -1,6 +1,6 @@
-<div style="text-align: center">
+<center>
   <img src="https://www.harvestprofit.com/logo.png" alt="Harvest Profit"></img>
-</div>
+</center>
 
 This project consists of two separate apps, [the backend](./backend) and [the frontend](./frontend).
 
