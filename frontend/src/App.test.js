@@ -1,15 +1,16 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+
+import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(
+test('renders an App', () => {
+  const wrapper = shallow(
     <Provider store={store}>
       <App />
     </Provider>
   );
 
-  expect(1).toEqual(1);
+  expect(wrapper.find(App).length).toEqual(1);
 });

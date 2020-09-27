@@ -147,6 +147,13 @@ class Map extends Component {
               </div>
             </>
           )}
+          {hoveredObject && (
+            <div style={{ position: 'absolute', zIndex: 1, pointerEvents: 'none', left: pointerX, top: pointerY }}>
+              {hoveredObject.properties.value}
+              <br />
+              {hoveredObject.properties.fill}
+            </div>
+          )}
         </DeckGL>
       </div>
     );
