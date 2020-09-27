@@ -1,6 +1,6 @@
 module Mutations
   class AdditiveCreate < Base::Mutation
-    field :additive, Types::CountyType, null: true
+    field :additive, Types::AddType, null: true
     field :errors,
           [String],
           null: true,

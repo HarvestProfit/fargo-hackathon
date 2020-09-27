@@ -1,6 +1,6 @@
 module Mutations
   class SubtractiveCreate < Base::Mutation
-    field :subtractive, Types::CountyType, null: true
+    field :subtractive, Types::SubtractType, null: true
     field :errors,
           [String],
           null: true,
