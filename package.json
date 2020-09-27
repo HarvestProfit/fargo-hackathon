@@ -8,6 +8,7 @@
   "scripts": {
     "db:setup": "cd backend && bundle exec rails db:setup",
     "db:migrate": "cd backend && bundle exec rails db:migrate",
+    "graphql": "cd backend && bundle exec rails graphql:schema:dump && cd .. && yarn --cwd=./frontend lint",
     "lint": "yarn --cwd=./frontend lint && cd backend && bundle exec rubocop --config='.rubocop.yml'",
     "postinstall": "cd backend && bundle install",
     "start": "foreman start"
