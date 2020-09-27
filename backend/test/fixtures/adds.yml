@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fargo_population:
+  name: Fargo Population
+  shape:
+  value: 300_000
+
+west_fargo_population:
+  name: West Fargo Population
+  shape:
+  value: 100_000

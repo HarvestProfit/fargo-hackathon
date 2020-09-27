@@ -10,15 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_115359) do
+ActiveRecord::Schema.define(version: 2020_09_27_125832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
+  create_table "adds", force: :cascade do |t|
+    t.string "name"
+    t.geography "shape", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.decimal "value", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "counties", force: :cascade do |t|
     t.string "name"
     t.geography "shape", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subtracts", force: :cascade do |t|
+    t.string "name"
+    t.geography "shape", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.decimal "value", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
