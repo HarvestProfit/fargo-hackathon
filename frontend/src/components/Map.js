@@ -1,5 +1,8 @@
 import _ from 'lodash';
+import graphql from 'babel-plugin-relay/macro';
+import bbox from '@turf/bbox';
 import { featureCollection } from '@turf/helpers';
+import hexGrid from '@turf/hex-grid';
 import DeckGL, { MapController, GeoJsonLayer } from 'deck.gl';
 import { EditableGeoJsonLayer, DrawPolygonMode, ModifyMode, ViewMode } from 'nebula.gl';
 import PropTypes from 'prop-types';
@@ -8,6 +11,14 @@ import { _MapContext as MapContext, NavigationControl, StaticMap } from 'react-m
 import GeoCoder from 'react-map-gl-geocoder';
 
 import colorToRGBArray from '../utilities/color';
+import environment from '../utilities/environment';
+import { fetchQuery } from 'react-relay';
+
+const query = graphql`
+  query MapQuery($featureCollection: JSON!) {
+    featureCollectionValue(featureCollection: $featureCollection)
+  }
+`;
 
 // Set your mapbox token here
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN; // eslint-disable-line
@@ -49,6 +60,15 @@ class Map extends Component {
     this.setState({ features });
   }
 
+  getHexGrid = (object) => {
+    const box = bbox(object.geometry);
+    const grid = hexGrid(box, 1, { units: 'miles' });
+    fetchQuery(environment, query, { featureCollection: grid }).then((data) => {
+      console.log(data);
+      this.setState({ features: data.featureCollectionValue.features })
+    });
+  }
+
   onLoad = () => {
     this.setState({ ready: true });
   }
@@ -86,6 +106,7 @@ class Map extends Component {
         getFillColor: (d) => (d.properties.fill ? colorToRGBArray(d.properties.fill) : [160, 160, 180, 200]),
         getLineColor: [160, 160, 180, 200],
         pickable: true,
+        onClick: (info) => this.getHexGrid(info.object),
         onHover: (info) => this.setState({
           hoveredObject: info.object,
           pointerX: info.x,
@@ -148,10 +169,8 @@ class Map extends Component {
             </>
           )}
           {hoveredObject && (
-            <div style={{ position: 'absolute', zIndex: 1, pointerEvents: 'none', left: pointerX, top: pointerY }}>
-              {hoveredObject.properties.value}
-              <br />
-              {hoveredObject.properties.fill}
+            <div style={{ position: 'absolute', zIndex: 1, pointerEvents: 'none', left: pointerX - 5, top: pointerY - 5 }}>
+              <button onClick={() => this.getHexGrid(hoveredObject)}>Log Object</button>
             </div>
           )}
         </DeckGL>
