@@ -7,7 +7,5 @@ COPY backend/Gemfile.lock ./
 RUN bundle install --without development test
 COPY backend/ ./
 
-EXPOSE 3001
-
 # Start the main process.
 CMD bundle exec rails server
