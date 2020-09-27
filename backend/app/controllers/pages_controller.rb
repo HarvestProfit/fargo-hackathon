@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    render json: { status: 'success' }
+    redirect_to ENV.fetch('FRONTEND_URL', 'http://localhost:3000')
   end
 end
