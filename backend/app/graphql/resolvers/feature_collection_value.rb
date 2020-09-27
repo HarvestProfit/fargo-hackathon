@@ -20,7 +20,7 @@ module Resolvers
         max = value if max < value
         min = value if min > value
       end
-      return min, max
+      [min, max]
     end
 
     def new_features_with_values(feature_collection, min, max)
