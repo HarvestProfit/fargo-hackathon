@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::Base::Object
+    field :county_create, mutation: Mutations::CountyCreate
     field :test_field,
           String,
           null: false,
