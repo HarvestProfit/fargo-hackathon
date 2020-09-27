@@ -53,7 +53,7 @@
   },
   "scripts": {
     "relay": "relay-compiler --src ./src --schema ../backend/schema.graphql",
-    "postinstall": "find . -name '*.mjs' | xargs rm",
+    "postinstall": "find . -regex '^.*\@turf.*\.mjs$' | xargs rm",
     "lint": "eslint src",
     "start": "react-scripts start",
     "build": "react-scripts build",
