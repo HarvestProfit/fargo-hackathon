@@ -5,12 +5,15 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
-#   allow do
-#     origins 'example.com'
-#
-#     resource '*',
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#   end
-# end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+    # All asset requests should be to rails prefixed assets paths
+    # served from the asset pipeline (e.g.: "/assets/*" by default)
+    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Preflighted_requests
+    resource '/graphql',
+             headers: :any,
+             methods: [:post],
+             expose: ['page', 'total', 'per-page', 'etag']
+  end
+end
