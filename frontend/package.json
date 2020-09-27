@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://harvestprofit.github.io/fargo-hackathon",
   "dependencies": {
     "@deck.gl/core": "^8.2.8",
     "@deck.gl/layers": "^8.2.8",
@@ -48,11 +49,13 @@
     "axios-mock-adapter": "^1.18.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "gh-pages": "^3.1.0",
     "react-test-renderer": "^16.13.1",
     "relay-compiler": "^10.0.1"
   },
   "scripts": {
     "relay": "relay-compiler --src ./src --schema ../backend/schema.graphql",
+    "deploy": "gh-pages -d build",
     "lint": "eslint src",
     "start": "react-scripts start",
     "build": "react-scripts build",
