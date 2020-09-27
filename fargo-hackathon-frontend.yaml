@@ -1,0 +1,11 @@
+name: fargo-hackathon-frontend
+static_sites:
+- name: frontend
+  source_dir: frontend
+  build_command: yarn run build && mv build _static
+  environment_slug: node-js
+  github:
+    branch: master
+    repo: HarvestProfit/fargo-hackathon
+  routes:
+  - path: /

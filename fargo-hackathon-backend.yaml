@@ -1,4 +1,4 @@
-name: fargo-hackathon
+name: fargo-hackathon-backend
 databases:
 - engine: PG
   name: database
@@ -7,7 +7,7 @@ databases:
   version: "12"
 services:
 - name: backend
-  source_dir: backend
+  dockerfile_path: backend/Dockerfile
   envs:
   - key: RAILS_ENV
     scope: RUN_AND_BUILD_TIME
@@ -18,14 +18,4 @@ services:
   github:
     repo: HarvestProfit/fargo-hackathon
     branch: master
-  routes:
-  - path: /api
-- name: frontend
-  source_dir: frontend
-  envs:
-  - key: NODE_ENV
-    scope: RUN_AND_BUILD_TIME
-    value: production
-  github:
-    repo: HarvestProfit/fargo-hackathon
-    branch: master
+
